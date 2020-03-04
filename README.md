@@ -33,31 +33,64 @@ We included 6 public available scRNA-seq datasets from lungs of healthy controll
 
 ## Results
 
-This workflow includes a R markdown file to guide the readers step by step for our analysis workflow. The following only highlights some of the key findings:
+This workflow includes a [R file](code/foo.txt) to guide the readers step by step for our analysis workflow. The following only highlights some of the key findings:
 
-###The general workflow of our analysis is:
+The general workflow of our analysis is:
 ![] (resources/flowchart1.png)
 
-###The total number samples is 52 and after QC control, the number of samples after filtering is 38
-![] (resources/samplefiltering.png)
+The total number samples is 52 and after QC control, the number of samples after filtering is 38:
+![] (resources/Initial_filtering.png)
 
-### We use standard Seurat [SCTtransform](https://satijalab.org/seurat/v3.1/integration.html) pipeline to perform integration. After integration, there are a total number of 
+We have a wide range of age from 17 to 88 years old and balanced among studies:
+![](resources/Agedistribution.png)
 
-```
 
-```
-
-And repeat
+We use standard Seurat [SCTtransform](https://satijalab.org/seurat/v3.1/integration.html) pipeline to perform integration. After integration, we perform unbiased clustering on AM, it generated 9 clusters: 
 
 ```
-until finished
+AM.integrated <- FindNeighbors(AM.integrated, reduction = "pca", dims = 1:30, nn.eps = 0.5)
+AM.integrated <- FindClusters(AM.integrated, resolution = 0.2, n.start = 10)
+
+```
+![](resources/AM_tsne1.png)
+
+We do not see batch effects from individual studies:
+![](resources/AM_tsne2.png)
+
+However, cluster 3 and 0 include activated macrophage characterized by SPP1 and CCL3, lack of FABP4 expression. We removed these two clusters from our analysis and reclustered the data.
+![](resources/AM_tsne3.png)
+
+```
+AM.integrated2<-subset(AM.integrated,ident=c(1,2,4,5,6,7,8))
+AM.integrated2 <- FindNeighbors(AM.integrated2, reduction = "pca", dims = 1:30, nn.eps = 0.5)
+AM.integrated2 <- FindClusters(AM.integrated2, resolution = 0.2, n.start = 10)
+```
+There were 7 clusters after cleaning. 
+![](resources/AM_tsne4.png)
+
+There was no imbalance of age within the group.
+![](resources/AM_age.png)
+
+Proven that there was no heterogeneity within age groups, we generated pseudo bulk RNA sequencing by averaging expression:
+
+```
+counts<-AverageExpression(AM.integrated,assays="integrated")
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+The DE analysis using edgeR package revealed 783 significantly down gene in aging and 215 up gene in aging between group <30 and >60 years old. The heatmap with hierarchical clustering shows samples with similar age grouped nicely together.
+![](resources/heatmap1.png)
+
+The trend was perserved if we used the same genes in all samples:
+![](resources/heatmap2.png)
+
+###Further cleaning: 
+
+we can further clean up our dataset by removing clusters 2 (CCL3, CCL4 cluster),5 (epithelial genes),6 (MoAM) from above object and perform DE analysis. In this case, there were even fewer upgenes in aging (66) and the down genes were similar (423). The trend was similar between <30 and >60 groups.
+![](resources/heatmap3.png)
 
 ## Versioning
 
-We use Seurat V3.1.2 and R V3.5.1. on Northwestern High Performance Computing Cluster
+We use Seurat V3.1.2 edgeR V3.20.9 under R V3.5.1. on Northwestern High Performance Computing Cluster
 
 ## Authors
 
