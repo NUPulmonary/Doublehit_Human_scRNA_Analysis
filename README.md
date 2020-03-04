@@ -84,7 +84,7 @@ The trend was perserved if we used the same genes in all samples:
 ![](resources/heatmap2.png)
 
 
-###Further cleaning: 
+###Further cleaning:### 
 
 we can further clean up our dataset by removing clusters 2 (CCL3, CCL4 cluster),5 (epithelial genes),6 (MoAM) from above object and perform DE analysis. In this case, there were even fewer upgenes in aging (66) and the down genes were similar (423). The trend was similar between <30 and >60 groups.
 ![](resources/heatmap3.png)
