@@ -33,19 +33,19 @@ We included 6 public available scRNA-seq datasets from lungs of healthy controll
 
 ## Results
 
-This workflow includes [data integration](code/HPVMMR_integration_analysis.R) and [pseudo bulk analysis](code/Pesudo_bulkRNA_analysis.R) to guide the readers step by step for our analysis workflow. The following only highlights some of the key findings:
+This workflow included [data integration](code/HPVMMR_integration_analysis.R) and [pseudo bulk analysis](code/Pesudo_bulkRNA_analysis.R) R code to guide the readers step by step for our analysis workflow. The following only highlighted some of the key findings:
 
-The general workflow of our analysis is:
+The general workflow of our analysis was:
 ![](resources/flowchart1.png)
 
-The total number samples is 52 and after QC control, the number of samples after filtering is 38:
+The total number samples was 52 and after QC control, the number of samples was 38:
 ![](resources/Initial_filtering.png)
 
 We have a wide range of age from 17 to 88 years old and balanced among studies:
 ![](resources/Agedistribution.png)
 
 
-We use standard Seurat [SCTtransform](https://satijalab.org/seurat/v3.1/integration.html) pipeline to perform integration. After integration, we perform unbiased clustering on AM, it generated 9 clusters: 
+We used standard Seurat [SCTtransform](https://satijalab.org/seurat/v3.1/integration.html) pipeline to perform integration. After integration, we performed unbiased clustering on AM and generated 9 clusters: 
 
 ```
 AM.integrated <- FindNeighbors(AM.integrated, reduction = "pca", dims = 1:30, nn.eps = 0.5)
@@ -54,10 +54,10 @@ AM.integrated <- FindClusters(AM.integrated, resolution = 0.2, n.start = 10)
 ```
 ![](resources/AM_tsne1.png)
 
-We do not see batch effects from individual studies:
+We did not see batch effects from individual studies:
 ![](resources/AM_tsne2.png)
 
-However, cluster 3 and 0 include activated macrophage characterized by SPP1 and CCL3, lack of FABP4 expression. We removed these two clusters from our analysis and reclustered the data.
+However, cluster 3 and 0 included activated macrophage characterized by SPP1 and CCL3 and lack of FABP4 expression. We removed these two clusters from our analysis and re-clustered the data.
 ![](resources/AM_tsne3.png)
 
 ```
@@ -77,7 +77,7 @@ Proven that there was no heterogeneity within age groups, we generated pseudo bu
 counts<-AverageExpression(AM.integrated,assays="integrated")
 ```
 
-The DE analysis using edgeR package revealed 783 significantly down gene in aging and 215 up gene in aging between group <30 and >60 years old. The heatmap with hierarchical clustering shows samples with similar age grouped nicely together.
+The DE analysis using edgeR package revealed 783 significantly down gene in aging and 215 up gene in aging between age group <30 and >60 years old. The heatmap with hierarchical clustering show samples with similar age grouped nicely together.
 ![](resources/heatmap1.png)
 
 The trend was perserved if we used the same genes in all samples:
@@ -86,7 +86,7 @@ The trend was perserved if we used the same genes in all samples:
 
 **Further cleaning:**
 
-we can further clean up our dataset by removing clusters 2 (CCL3, CCL4 cluster),5 (epithelial genes),6 (MoAM) from above object and perform DE analysis. In this case, there were even fewer upgenes in aging (66) and the down genes were similar (423). The trend was similar between <30 and >60 groups.
+we could additionally clean up our dataset by removing clusters 2 (CCL3 and CCL4 cluster),5 (epithelial genes cluster),6 (MoAM cluster) from above object and perform DE analysis. In this case, there were even fewer upgenes in aging (66) and the down genes were similar (423). The trend was similar between <30 and >60 groups.
 ![](resources/heatmap3.png)
 
 ## Versioning
@@ -108,6 +108,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* We thank Northwestern IT and QUEST for their support
+* Northwestern IT and QUEST for their support
 * NIH funding
 * Driskill Graduate Program in Life Science
