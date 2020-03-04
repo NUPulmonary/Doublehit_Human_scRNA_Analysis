@@ -33,7 +33,7 @@ We included 6 public available scRNA-seq datasets from lungs of healthy controll
 
 ## Results
 
-This workflow includes a [R file](code/foo.txt) to guide the readers step by step for our analysis workflow. The following only highlights some of the key findings:
+This workflow includes [data integration](code/HPVMMR_integration_analysis.R) and [pseudo bulk analysis](code/Pesudo_bulkRNA_analysis.R) to guide the readers step by step for our analysis workflow. The following only highlights some of the key findings:
 
 The general workflow of our analysis is:
 ![](resources/flowchart1.png)
