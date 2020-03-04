@@ -95,8 +95,10 @@ We use Seurat V3.1.2 and edgeR V3.20.9 under R V3.5.1 on Northwestern High Perfo
 
 ## Authors
 
-* **Ziyou Ren** - *Phd student in Bioinformatics* - [Northwestern University](https://amaral.northwestern.edu/people/ren/)
-* **More authors**
+* **Ziyou Ren** - *Phd student in Bioinformatics* - [Northwestern University](https://labs.feinberg.northwestern.edu/budinger/members/index.html)
+* **Alexandra C. McQuattie-Pimentel** - *Medical Resident* - [Northwestern University](https://labs.feinberg.northwestern.edu/budinger/members/index.html)
+* **Alexander V. Misharin** - *Assistant Professor* - [Northwestern University](https://www.feinberg.northwestern.edu/faculty-profiles/az/profile.html?xid=19421)
+* **GR Scott Budinger** - *Professor* - [Northwestern University](https://www.feinberg.northwestern.edu/faculty-profiles/az/profile.html?xid=10309)
 
 See also the list of [contributors](https://github.com/NUPulmonary/Doublehit_Human_scRNA_Analysis/commits) who participated in this project.
 
