@@ -36,10 +36,10 @@ We included 6 public available scRNA-seq datasets from lungs of healthy controll
 This workflow includes a [R file](code/foo.txt) to guide the readers step by step for our analysis workflow. The following only highlights some of the key findings:
 
 The general workflow of our analysis is:
-![] (resources/flowchart1.png)
+![](resources/flowchart1.png)
 
 The total number samples is 52 and after QC control, the number of samples after filtering is 38:
-![] (resources/Initial_filtering.png)
+![](resources/Initial_filtering.png)
 
 We have a wide range of age from 17 to 88 years old and balanced among studies:
 ![](resources/Agedistribution.png)
@@ -82,6 +82,7 @@ The DE analysis using edgeR package revealed 783 significantly down gene in agin
 
 The trend was perserved if we used the same genes in all samples:
 ![](resources/heatmap2.png)
+
 
 ###Further cleaning: 
 
