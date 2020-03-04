@@ -7,17 +7,17 @@ Single cell RNA-seq (scRNA-seq) captures the transcriptomic phenotype of multipl
 
 ## Prerequisites
 
-Install all required R packages in the R_requirement.txt files using either bioconductor or CRAN
+Install all required R packages in the [R_requirement.txt](resources/R_requirement.txt) files using either bioconductor or CRAN
 
 ```
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-BiocManager::install(R_requirement.txt)
+BiocManager::install("package")
 ```
 or
 
 ```
-install.packages(R_requirement.txt)
+install.packages("package")
 ```
 
 ## Data availability
@@ -91,7 +91,7 @@ we can further clean up our dataset by removing clusters 2 (CCL3, CCL4 cluster),
 
 ## Versioning
 
-We use Seurat V3.1.2 edgeR V3.20.9 under R V3.5.1. on Northwestern High Performance Computing Cluster
+We use Seurat V3.1.2 and edgeR V3.20.9 under R V3.5.1 on Northwestern High Performance Computing Cluster. Detail session info can be found [here](resources/sessioninfo.txt).
 
 ## Authors
 
